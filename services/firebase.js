@@ -26,3 +26,5 @@ export async function getData(code) {
     return null;
   }
 }
+
+

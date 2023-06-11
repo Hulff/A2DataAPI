@@ -1,4 +1,4 @@
-import { writeData, getData } from "../services/firebase"
+import { writeData, getData } from "../../services/firebase"
 
 function saveData(req, res) {
   const date = new Date();
