@@ -1,4 +1,4 @@
-import { writeData, getData } from "../../services/firebase"
+import { writeData, getData } from "../../services/firebase";
 
 function saveData(req, res) {
   const date = new Date();
@@ -7,7 +7,7 @@ function saveData(req, res) {
 
   res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
 
-//   writeData(data.code,date, data.data);
+  writeData(data.code, date, data.data);
 
   res.json({
     horario: date,
