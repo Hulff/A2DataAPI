@@ -7,7 +7,7 @@ function saveData(req, res) {
 
   res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
 
-  writeData(data.code, date, data.data);
+  writeData(data.code, date, data.temp);
 
   res.json({
     horario: date,
