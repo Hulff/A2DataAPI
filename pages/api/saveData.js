@@ -5,7 +5,7 @@ function saveData(req, res) {
   let data = { ...req.body };
   console.log(data);
 
-  res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
+  // res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
 
   writeData(data.code, date, data.temp);
 
