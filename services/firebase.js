@@ -15,6 +15,8 @@ const database = getDatabase(app);
 
 export function writeData(code,time,data) {
   set(ref(database, `devices/${code}/${time}`), data);
+  console.log("success");
+
 }
 export async function getData(code) {
   const snapshot = await get(child(ref(database), `devices/${code}`));

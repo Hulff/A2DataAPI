@@ -14,10 +14,8 @@ function saveData(req, res) {
     co2: req.body.co2,
   };
   console.log(data);
-
-  res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
   writeData(req.body.code, adjustedDate, data);
-
+  res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
   res.json({
     horario: formattedDate,
   });
