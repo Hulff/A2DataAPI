@@ -4,8 +4,7 @@ function saveData(req, res) {
   const currentDate = new Date();
   const adjustedDate = new Date(currentDate.getTime() + 180 * 60000);
   const locale = "pt-BR";
-  const options = { dateStyle: "short", timeStyle: "short" };
-  const formattedDate = adjustedDate.toLocaleString(locale, options);
+  const formattedDate = adjustedDate.toLocaleString(locale);
 
   // Imprime a data formatada
   console.log("Data:", formattedDate);
