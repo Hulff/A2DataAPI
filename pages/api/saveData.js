@@ -1,6 +1,7 @@
 import { writeData, getData } from "../../services/firebase";
 
 function saveData(req, res) {
+  const currentDate = new Date();
   const adjustedDate = new Date(currentDate.getTime() + 180 * 60000);
   const locale = "pt-BR";
   const options = { dateStyle: "short", timeStyle: "short" };
@@ -17,7 +18,7 @@ function saveData(req, res) {
   console.log(data);
 
   // res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
-  writeData(req.body.code, date, data);
+  writeData(req.body.code, formattedDate, data);
 
   res.json({
     horario: formattedDate,
