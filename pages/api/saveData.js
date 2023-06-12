@@ -1,7 +1,14 @@
-import { writeData, getData } from "../../services/firebase";
+import { writeData , getData } from "../../services/firebase";
 
 function saveData(req, res) {
-  const date = new Date();
+const date = new Date();
+const locale = 'pt-BR';
+const options = { dateStyle: 'short', timeStyle: 'short' };
+const formattedDate = date.toLocaleString(locale, options);
+
+// Imprime a data formatada
+console.log('Data:', formattedDate);
+
   let data = {
     temp: req.body.temp,
     vocs: req.body.vocs,
@@ -10,11 +17,10 @@ function saveData(req, res) {
   console.log(data);
 
   // res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
-
   writeData(req.body.code, date, data);
 
   res.json({
-    horario: date,
+    horario: formattedDate,
   });
 }
 export default saveData;
