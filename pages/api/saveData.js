@@ -1,7 +1,7 @@
 import { writeData } from "../../services/firebase";
 function saveData(req, res) {
-  const currentDate = new Date();
-  const adjustedDate = new Date(currentDate.getTime() + -180 * 60000);
+  const adjustedDate = new Date(new Date().getTime() + -180 * 60000);
+  let fixedDate = adjustedDate.toLocaleString("pt-BR");
   let data = {
     temp: req.body.temp,
     vocs: req.body.vocs,
@@ -9,7 +9,7 @@ function saveData(req, res) {
   };
   writeData(req.body.code, adjustedDate, data);
   res.json({
-    horario: adjustedDate,
+    horario: fixedDate,
   });
 }
 export default saveData;
