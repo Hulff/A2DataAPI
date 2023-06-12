@@ -15,7 +15,7 @@ function saveData(req, res) {
   };
   console.log(data);
   writeData(req.body.code, adjustedDate, data);
-  res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
+  // res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
   res.json({
     horario: formattedDate,
   });
