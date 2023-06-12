@@ -1,19 +1,19 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, remove, get, child } from "firebase/database";
+import { getDatabase, ref, set, get, child } from "firebase/database";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAkV7_nu0LT2Ya8GQzsSYP5mITLGKEuCTo",
-    authDomain: "a2dataapi.firebaseapp.com",
-    projectId: "a2dataapi",
-    storageBucket: "a2dataapi.appspot.com",
-    messagingSenderId: "17389564071",
-    appId: "1:17389564071:web:f227c75e8bbfe1be5beb82",
-    measurementId: "G-YRM4GW93B5"
-  };
+  apiKey: "AIzaSyAkV7_nu0LT2Ya8GQzsSYP5mITLGKEuCTo",
+  authDomain: "a2dataapi.firebaseapp.com",
+  projectId: "a2dataapi",
+  storageBucket: "a2dataapi.appspot.com",
+  messagingSenderId: "17389564071",
+  appId: "1:17389564071:web:f227c75e8bbfe1be5beb82",
+  measurementId: "G-YRM4GW93B5",
+};
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-export function writeData(code,time,data) {
+export function writeData(code, time, data) {
   set(ref(database, `devices/${code}/${time}`), data);
 }
 export async function getData(code) {
@@ -26,5 +26,3 @@ export async function getData(code) {
     return null;
   }
 }
-
-
