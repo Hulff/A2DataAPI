@@ -6,7 +6,6 @@ function saveData(req, res) {
   const locale = "pt-BR";
   const formattedDate = adjustedDate.toLocaleString(locale);
 
-  // Imprime a data formatada
   console.log("Data:", formattedDate);
 
   let data = {
@@ -16,7 +15,7 @@ function saveData(req, res) {
   };
   console.log(data);
 
-  // res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
+  res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
   writeData(req.body.code, adjustedDate, data);
 
   res.json({
