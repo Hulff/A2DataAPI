@@ -14,9 +14,8 @@ async function saveData(req, res) {
       horario: adjustedDate.toLocaleString("pt-BR"),
     });
   } catch (error) {
-    // Trate qualquer erro que possa ocorrer durante a operação de salvamento
-    res.status(500).json({ error: "Falha ao salvar os dados" });
+    // Handle the error
+    res.status(500).json({ error: "Failed to write data" });
   }
 }
-
 export default saveData;
