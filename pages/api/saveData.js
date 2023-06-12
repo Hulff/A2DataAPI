@@ -8,7 +8,7 @@ function saveData(req, res) {
     co2: req.body.co2,
   };
   console.log(data);
-  writeData(req.body.code, adjustedDate, data);
+  writeData(req.body.code, adjustedDate.toLocaleString("pt-BR"), data);
   res.json({
     horario: adjustedDate.toLocaleString("pt-BR"),
   });
