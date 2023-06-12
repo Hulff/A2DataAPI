@@ -1,13 +1,13 @@
-import { writeData , getData } from "../../services/firebase";
+import { writeData, getData } from "../../services/firebase";
 
 function saveData(req, res) {
-const date = new Date();
-const locale = 'pt-BR';
-const options = { dateStyle: 'short', timeStyle: 'short' };
-const formattedDate = date.toLocaleString(locale, options);
+  const adjustedDate = new Date(currentDate.getTime() + 180 * 60000);
+  const locale = "pt-BR";
+  const options = { dateStyle: "short", timeStyle: "short" };
+  const formattedDate = adjustedDate.toLocaleString(locale, options);
 
-// Imprime a data formatada
-console.log('Data:', formattedDate);
+  // Imprime a data formatada
+  console.log("Data:", formattedDate);
 
   let data = {
     temp: req.body.temp,
