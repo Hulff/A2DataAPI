@@ -2,7 +2,7 @@ import { writeData, getData } from "../../services/firebase";
 
 function saveData(req, res) {
   const currentDate = new Date();
-  const adjustedDate = new Date(currentDate.getTime() + 180 * 60000);
+  const adjustedDate = new Date(currentDate.getTime() + -180 * 60000);
   const locale = "pt-BR";
   const formattedDate = adjustedDate.toLocaleString(locale);
 
