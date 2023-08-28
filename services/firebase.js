@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, get, child } from "firebase/database";
+import { v4 as uuid } from "uuid";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+
+// Add a new document in collection "cities"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkV7_nu0LT2Ya8GQzsSYP5mITLGKEuCTo",
@@ -11,18 +14,17 @@ const firebaseConfig = {
   measurementId: "G-YRM4GW93B5",
 };
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const db = getFirestore(app)
 
-export function writeData(code, time, data) {
-  return set(ref(database, `devices/${code}/${time}`), data);
+export async function writeData (data,time) {
+
+  await setDoc(doc(db, "sensors", "data", data.serial, uuid()), {
+    name:data.name,
+    co2:data.co2,
+    co:data.co,
+    voc:data.voc,
+    temp:data.temp,
+    serverTime:time
+  });
 }
-export async function getData(code) {
-  const snapshot = await get(child(ref(database), `devices/${code}`));
-  if (snapshot.exists()) {
-    let data = snapshot.val();
-    return data;
-  } else {
-    console.log("No data available");
-    return null;
-  }
-}
+
