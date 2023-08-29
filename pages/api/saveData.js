@@ -14,7 +14,7 @@ async function saveData(req, res) {
   console.log(data)
 
   try {
-    await writeData(data, adjustedDate);
+    await writeData(data, adjustedDate.toLocaleString("pt-BR"));
     res.json({
       horario: adjustedDate.toLocaleString("pt-BR"),
     });
