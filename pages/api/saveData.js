@@ -1,7 +1,7 @@
 import { writeData } from "../../services/firebase";
 
 async function saveData(req, res) {
-  const adjustedDate = new Date(new Date().getTime() - 180 * 60000);
+  const adjustedDate = new Date(new Date().getTime());
   let data = {
     serial: req.body.serial,
     name: req.body.name,
