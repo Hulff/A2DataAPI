@@ -1,7 +1,7 @@
 import { writeData } from "../../services/firebase";
 
 async function saveData(req, res) {
-  const adjustedDate = new Date(new Date().getTime() + +180 * 60000);
+  const adjustedDate = new Date(new Date().getTime() + 180 * 60000);
   let data = {
     serial: req.body.serial,
     name: req.body.name,
@@ -14,7 +14,7 @@ async function saveData(req, res) {
   console.log(data)
 
   try {
-    await writeData(data, adjustedDate);
+    await writeData(data, adjustedDate.toLocaleString("pt-BR"));
     res.json({
       horario: adjustedDate.toLocaleString("pt-BR"),
     });
