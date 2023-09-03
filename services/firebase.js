@@ -19,12 +19,7 @@ const db = getFirestore(app)
 export async function writeData (data,time) {
 
   await setDoc(doc(db, "sensors", "data", data.serial, uuid()), {
-    name:data.name,
-    co2:data.co2,
-    co:data.co,
-    voc:data.voc,
-    temp:data.temp,
-    serverTime:time
+    ...data, serverTime: time
   });
 }
 
