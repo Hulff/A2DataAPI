@@ -9,6 +9,7 @@ export default async function (req, res) {
         pressao:0,
         temp:0,
         voc:0,
+umidade:0,
         serial:0,
     }
     console.log(slug);
