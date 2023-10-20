@@ -23,3 +23,30 @@ export async function writeData (data,time) {
   });
 }
 
+
+import { query, collection, getDocs, where } from "firebase/firestore";
+
+export async function getData(serial, startDate, endDate) {
+  try {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const q = query(
+      collection(db, "sensors", "data", serial),
+      where("serverTime", ">=", start),
+      where("serverTime", "<=", end)
+    );
+
+    const querySnapshot = await getDocs(q);
+    const data = querySnapshot.docs.map((doc) => doc.data());
+
+    if (data.length > 0) {
+      return data;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return null;
+  }
+}
