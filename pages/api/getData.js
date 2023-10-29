@@ -27,7 +27,7 @@ async function sendData(req, res) {
         res.status(500).json({ error: "Data inválida" });
     }
     try {
-        let data = await getData("13898", startDate, endDate); // Usando await para esperar a função getData terminar
+        let data = await getData(req.body.id, startDate, endDate); // Usando await para esperar a função getData terminar
         console.log(data);
         res.json(data);
     } catch (error) {
