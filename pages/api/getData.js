@@ -1,7 +1,7 @@
 import { getData } from "../../services/firebase";
 
 function createMidnightDate(day, month, year) {
-    const date = new Date(Date.UTC(year, month - 1, day));
+    const date = new Date(Date.UTC(year, month - 1, day,0,0,0,0));
     if (!isNaN(date)) {
         date.setMinutes(date.getMinutes());
         return date;
