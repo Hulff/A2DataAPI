@@ -15,7 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
-export async function writeData (data,time) {
+export async function writeData(data, time) {
 
   await setDoc(doc(db, "sensors", "data", data.serial, uuid()), {
     ...data, serverTime: time
@@ -29,7 +29,8 @@ export async function getData(serial, startDate, endDate) {
   try {
     const start = new Date(startDate);
     const end = new Date(endDate);
-
+    console.log(startDate)
+    console.log(endDate)
     const q = query(
       collection(db, "sensors", "data", serial),
       where("serverTime", ">=", start),
@@ -49,3 +50,4 @@ export async function getData(serial, startDate, endDate) {
     return null;
   }
 }
+
