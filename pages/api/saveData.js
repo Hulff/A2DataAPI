@@ -1,5 +1,5 @@
 
-import { writeData } from "../../services/firebase";
+import { writeData,writeInfo } from "../../services/firebase";
 
 async function saveData(req, res) {
   const adjustedDate = new Date(new Date().getTime());
@@ -8,6 +8,7 @@ async function saveData(req, res) {
 
   try {
     await writeData(data, adjustedDate);
+    await writeInfo(req.body.serial,adjustedDate);
     res.json({
       horario: adjustedDate
     });
