@@ -73,11 +73,11 @@ export async function writeInfo(serial, date) {
       }
       if (!newData.years[`${ano}`][`${mes}`]) {
         console.log("não tem mes");
-        newData.years[`${ano}`][`${mes}`] = [`${dia}`]
+        newData.years[`${ano}`][`${mes}`] = [dia]
       } else {
-        if (!newData.years[`${ano}`][`${mes}`].includes(`${dia}`)) {
+        if (!newData.years[`${ano}`][`${mes}`].includes(dia)) {
           console.log("nao tem o dia");
-          newData.years[`${ano}`][`${mes}`].push(`${dia}`);
+          newData.years[`${ano}`][`${mes}`].push(dia);
         }
       }
       console.log(newData)
@@ -94,7 +94,7 @@ export async function writeInfo(serial, date) {
       console.log("não tem mes")
       newData.years[`${ano}`] = {}
       newData.years[`${ano}`][`${mes}`] = {}
-      newData.years[`${ano}`][`${mes}`] = [`${dia}`]
+      newData.years[`${ano}`][`${mes}`] = [dia]
       console.log(newData)
       await setDoc(doc(db, "sensors", "info", serial, serial), {
         ...newData
