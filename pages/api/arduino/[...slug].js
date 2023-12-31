@@ -21,7 +21,7 @@ export default async function (req, res) {
             } else if (slug[0]== "3") {
                 m = "red"
             }
-            writeUserData(m)
+            await writeUserData(m)
             res.send(m)
         } catch (error) {
             console.error(error);
