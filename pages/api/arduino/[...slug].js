@@ -14,15 +14,15 @@ export default async function (req, res) {
      
         try {
             let m;
-            if(slug[0]==1) {
+            if(slug[0]== "1") {
                 m = "blue"
-            } else if (slug[0] == 2) {
+            } else if (slug[0] == '2') {
                 m = "lime"
-            } else if (slug[0]== 3) {
+            } else if (slug[0]== "3") {
                 m = "red"
             }
             writeUserData(m)
-            res.send("foi")
+            res.send(m)
         } catch (error) {
             console.error(error);
             res.send(error)
