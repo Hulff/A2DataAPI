@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { v4 as uuid } from "uuid";
 import { getFirestore, doc, setDoc, query, collection, getDocs, where } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAkV7_nu0LT2Ya8GQzsSYP5mITLGKEuCTo",
@@ -15,13 +16,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app)
 
+export const db2 = getDatabase(app)
+
+
+
 export async function writeData(data, time) {
 
   await setDoc(doc(db, "sensors", "data", data.serial, uuid()), {
     ...data, serverTime: time
   });
 }
-
 export async function getData(serial, startDate, endDate) {
   try {
     const start = new Date(startDate);
