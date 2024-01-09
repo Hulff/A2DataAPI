@@ -9,23 +9,29 @@ function createEndOfDayDate(day, month, year) {
     const date = new Date(Date.UTC(year, month - 1, day, 23, 59, 59, 999));
     return isNaN(date) ? null : date;
 }
-function substituirServerTimePorHorarioNormal(dados) {
-    // Itera sobre os objetos no array de dados
+const substituirServerTimePorHorarioNormal = (dados) => {
     dados.forEach((item) => {
-        // Obtém o timestamp do campo serverTime
-        const timestamp = item.serverTime.seconds;
+        const timestamp = item.serverTime.seconds + item.serverTime.nanoseconds / 1e9;
+        const date = new Date(timestamp * 1000);
 
-        // Cria um objeto Date usando o timestamp
-        const data = new Date(timestamp * 1000); // Multiplica por 1000 para converter segundos para milissegundos
+        const options = {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'America/Sao_Paulo', // ajuste conforme necessário
+        };
 
-        // Substitui o campo serverTime pelo horário normal formatado
-        item.horarioNormal = data.toLocaleString();
+        item.Time = date.toLocaleString('pt-BR', options);
 
         // Remove o campo serverTime se não for mais necessário
         delete item.serverTime;
     });
+
     return dados;
-}
+};
 
 
 async function sendData(req, res) {
